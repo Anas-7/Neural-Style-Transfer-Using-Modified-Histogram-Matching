@@ -1,0 +1,6 @@
+numpy==1.18.5
+scikit_image==0.18.1
+opencv_python==4.3.0.36
+imutils==0.5.4
+tensorflow==2.1.0
+matplotlib==3.2.1
