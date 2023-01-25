@@ -1,0 +1,27 @@
+{% extends "myapp/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div> 
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Upload Images</legend>
+            {{ form|crispy }}
+           
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit" >Submit</button>
+
+        </div>
+    </form>
+    {% if flag %}
+    <p> Output image:</p>
+        
+        <img src="{{ upload.final_image.url }}"/>
+    </div>
+    {% else %}
+    <p></p>
+    {% endif %}   
+</div>
+    
+{% endblock content %}
