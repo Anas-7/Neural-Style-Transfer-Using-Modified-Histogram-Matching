@@ -31,6 +31,7 @@ IMAGESIZE_ARGUMENT = "imagesize"
 IMAGE_DIRECTORY = "./media/myapp/input/"
 WEIGHTS_NO_TOP_PATH = "./myapp/vgg19_weights_tf_dim_ordering_tf_kernels_notop.h5"
 basewidth = baseheight = int(os.environ.get(IMAGESIZE_ARGUMENT))
+ITERATIONS_ARGUMENT = "iterations"
 
 class LoadImages:
   def __init__(self, content_image_name, style_image_name):

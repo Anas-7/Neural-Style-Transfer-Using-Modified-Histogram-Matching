@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib import messages
+import os
 from .forms import UploadForm
 from django.shortcuts import redirect
-from .neural_style_transfer_using_modified_histogram_matching import LoadImages, InputImagePreprocessing, NST
+from .neural_style_transfer_using_modified_histogram_matching import LoadImages, InputImagePreprocessing, NST, ITERATIONS_ARGUMENT
 from .models import Upload
 # Create your views here.
 
@@ -28,7 +29,7 @@ def home(request):
             CONTENT_LAYERS = [
             ("block4_conv1",1)]
             nst = NST(input_image, str(form.cleaned_data.get("image1")), content_image,
-                     str(form.cleaned_data.get("image2")), style_image, STYLE_LAYERS, CONTENT_LAYERS)
+                     str(form.cleaned_data.get("image2")), style_image, STYLE_LAYERS, CONTENT_LAYERS, iterations=int(os.environ.get(ITERATIONS_ARGUMENT)))
             image_name=nst.single_mode()
             flag=True
             upload.final_image=image_name
